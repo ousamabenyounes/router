@@ -1,5 +1,19 @@
 # @tanstack/router-core
 
+## 1.171.28
+
+### Patch Changes
+
+- [#8222](https://github.com/TanStack/router/pull/8222) [`edf0e16`](https://github.com/TanStack/router/commit/edf0e16ebfe82ec6e8f68f403a1fda8de9e28889) - Make each load transaction's completion follow its current successor so a burst of back-to-back loads wakes each superseded waiter once instead of once per successor. Previously every superseded `load()` re-polled the current transaction on each later completion, which was quadratic in microtask work.
+
+- [#8240](https://github.com/TanStack/router/pull/8240) [`2f91503`](https://github.com/TanStack/router/commit/2f9150309bc472f4a75cbe98adcdb50c76b12c7a) - Avoid quadratic resource handoff scans when navigating with many cached route matches.
+
+- [#8161](https://github.com/TanStack/router/pull/8161) [`f0b5eda`](https://github.com/TanStack/router/commit/f0b5eda544606686a8a8d675a686ca1366428b96) - Retain successful not-found matches as terminal shared boundaries during client navigation, preserving route context while the destination loads.
+
+- [#8142](https://github.com/TanStack/router/pull/8142) [`50eafca`](https://github.com/TanStack/router/commit/50eafcaebbbedb6fde3b2816de7a0ace8cde4832) - Avoid unnecessary JSON.parse calls for search parameter values that cannot begin valid JSON, while preserving custom parser behavior.
+
+- [#8230](https://github.com/TanStack/router/pull/8230) [`ee28348`](https://github.com/TanStack/router/commit/ee283480dfa51150a2e0b096a6eff94a89ff8b3f) - Replace the internal LRU cache behind path resolution, route matching and the SSR manifest lookup with a smaller SIEVE cache whose hits no longer relink a list, and fix an eviction edge case in the old implementation.
+
 ## 1.171.27
 
 ### Patch Changes
